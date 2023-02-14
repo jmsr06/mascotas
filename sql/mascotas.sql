@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-12-2022 a las 01:39:58
+-- Tiempo de generación: 14-02-2023 a las 01:38:50
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -64,11 +64,10 @@ CREATE TABLE `ciudades` (
 --
 
 INSERT INTO `ciudades` (`id`, `nombre`, `slug`, `created_at`, `updated_at`) VALUES
-(2, 'Bucaramanga', 'bucaramanga', '2022-12-02 02:07:20', '2022-12-15 01:19:36'),
-(3, 'Floridablanca', 'floridablanca', '2022-12-02 02:07:20', '2022-12-15 01:19:56'),
-(4, 'Girón', 'giron', '2022-12-02 02:07:20', '2022-12-15 01:20:07'),
-(5, 'Piedecuesta', 'piedecuesta', '2022-12-15 01:00:53', '2022-12-15 01:20:15'),
-(8, 'Cartagena', 'cartagena', '2022-12-15 02:16:28', '2022-12-15 02:31:06');
+(1, 'Bucaramanga', 'bucaramanga', '2022-12-02 02:07:20', '2022-12-15 01:19:36'),
+(2, 'Floridablanca', 'floridablanca', '2022-12-02 02:07:20', '2022-12-15 01:19:56'),
+(3, 'Girón', 'giron', '2022-12-02 02:07:20', '2022-12-15 01:20:07'),
+(4, 'Piedecuesta', 'piedecuesta', '2022-12-15 01:00:53', '2022-12-15 01:20:15');
 
 -- --------------------------------------------------------
 
@@ -127,7 +126,7 @@ CREATE TABLE `fundaciones` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `slug` varchar(191) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` text DEFAULT NULL,
   `logo` varchar(191) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `telefono` varchar(10) NOT NULL,
@@ -149,7 +148,7 @@ CREATE TABLE `fundaciones` (
 --
 
 INSERT INTO `fundaciones` (`id`, `nombre`, `slug`, `descripcion`, `logo`, `direccion`, `telefono`, `estado`, `comentario`, `revision`, `email`, `facebook`, `whatsapp`, `instagram`, `user_id`, `ciudad_id`, `created_at`, `updated_at`) VALUES
-(1, 'fundacion prueba', 'fundacion-prueba', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '/public/logos/perdidos.jpg', 'casa', '3204877763', '2', NULL, 0, 'fundacion@gmail.com', NULL, NULL, 'fundacion', 1, 2, '2022-12-15 19:04:20', '2022-12-15 19:04:20');
+(1, 'Fundación prueba', 'fundacion-prueba', '', 'public/logos-fundaciones/621fcf8f8d5e27b2b649a8e74345ab90.jpg', 'Calle 12 # 30 - 260 ', '1234567890', '2', NULL, 0, 'fundacion@gmail.com', 'fundacion', '1234567890', 'fundacion', 1, 2, '2022-12-15 19:04:20', '2023-02-13 21:05:27');
 
 -- --------------------------------------------------------
 
@@ -171,11 +170,11 @@ CREATE TABLE `imagen_mascotas` (
 --
 
 INSERT INTO `imagen_mascotas` (`id`, `url`, `prioridad`, `mascota_id`, `created_at`, `updated_at`) VALUES
-(1, '/public/logos/perdidos.jpg', 1, 1, '2022-12-15 19:05:23', '2022-12-15 19:05:23'),
-(2, '/public/logos/encontrados.jpg', 2, 1, '2022-12-16 00:38:38', '2022-12-16 00:38:38'),
-(3, '/public/logos/encontrados.jpg', 1, 2, '2022-12-16 19:40:03', '2022-12-16 19:40:03'),
-(4, '/public/logos/perdidos.jpg', 1, 4, '2022-12-19 14:47:36', '2022-12-19 14:47:36'),
-(5, '/public/logos/perdidos.jpg', 1, 3, '2022-12-19 14:47:36', '2022-12-19 14:47:36');
+(84, 'public/imagenes-mascotas/70a4eb755bed9116f36d0b4fa78f6e6c.jpg', 1, 67, '2023-02-13 21:07:36', '2023-02-13 21:07:47'),
+(85, 'public/imagenes-mascotas/93a65d6ec0f4dc2ea1f2ddaf5eef2e28.jpg', 2, 67, '2023-02-13 21:07:47', '2023-02-13 21:07:47'),
+(86, 'public/imagenes-mascotas/55dc28e1645b717bf320717158a93252.jpg', 1, 31, '2023-02-13 21:09:05', '2023-02-13 21:09:05'),
+(87, 'public/imagenes-mascotas/332ef1ec2988e8b6914369edc5643bbd.jpg', 2, 31, '2023-02-13 21:09:05', '2023-02-13 21:09:05'),
+(88, 'public/imagenes-mascotas/b9d6656b6ae5b5e6980969f6952eb98f.jpg', 1, 66, '2023-02-13 21:09:39', '2023-02-13 21:09:39');
 
 -- --------------------------------------------------------
 
@@ -188,7 +187,7 @@ CREATE TABLE `mascotas` (
   `nombre` varchar(100) NOT NULL,
   `slug` varchar(100) NOT NULL,
   `sexo` enum('H','M') NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` text DEFAULT NULL,
   `esterilizacion` tinyint(1) NOT NULL,
   `categoria_id` tinyint(3) UNSIGNED NOT NULL,
   `size_id` tinyint(3) UNSIGNED NOT NULL,
@@ -207,10 +206,10 @@ CREATE TABLE `mascotas` (
 --
 
 INSERT INTO `mascotas` (`id`, `nombre`, `slug`, `sexo`, `descripcion`, `esterilizacion`, `categoria_id`, `size_id`, `edad_id`, `ciudad_id`, `fundacion_id`, `estado_id`, `publicacion`, `revision`, `created_at`, `updated_at`) VALUES
-(1, 'pana', 'pana', 'M', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 1, 2, 2, 2, 1, 1, '1', 0, '2022-12-15 19:04:32', '2022-12-15 19:04:32'),
-(2, 'oreo', 'oreo', 'M', 'gato gordo', 1, 2, 3, 1, 2, 1, 2, '2', 0, '2022-12-16 19:39:18', '2022-12-16 19:39:18'),
-(3, 'pini', 'pini', 'H', 'csacs', 1, 2, 1, 2, 2, 1, 1, '3', 0, '2022-12-19 14:45:04', '2022-12-19 14:45:04'),
-(4, 'huesi', 'huesi', 'M', 'acsaca', 1, 2, 3, 1, 2, 1, 1, '3', 0, '2022-12-19 14:45:31', '2022-12-19 14:45:31');
+(31, 'simon', 'simon', 'M', '', 1, 1, 3, 2, 2, 1, 3, '1', 0, '2022-12-31 19:13:45', '2023-02-13 21:09:05'),
+(65, 'prueba4', 'prueba4', 'H', '', 2, 3, 2, 4, 5, 1, 1, '1', 0, '2023-01-06 21:33:47', '2023-02-01 22:04:49'),
+(66, 'pimienta', 'pimienta', 'H', '', 2, 2, 1, 1, 3, 1, 1, '1', 0, '2023-02-02 14:59:51', '2023-02-13 21:09:39'),
+(67, 'canelita', 'canelita', 'H', '', 1, 1, 2, 2, 4, 1, 1, '1', 0, '2023-02-02 15:02:54', '2023-02-13 21:07:47');
 
 -- --------------------------------------------------------
 
@@ -243,10 +242,10 @@ INSERT INTO `sizes` (`id`, `nombre`, `slug`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
   `password` varchar(191) NOT NULL,
-  `rol` enum('0','1','2') NOT NULL DEFAULT '2',
+  `rol` enum('1','2') NOT NULL DEFAULT '2',
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -255,8 +254,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `rol`, `created_at`, `updated_at`) VALUES
-(1, 'jenny', 'jenny@gmail.com', '12345', '2', '2022-12-15 19:02:16', '2022-12-15 19:02:16');
+INSERT INTO `users` (`id`, `email`, `password`, `rol`, `token`, `created_at`, `updated_at`) VALUES
+(1, 'jennysantamaria06@gmail.com', '$2b$10$73MAK3PmQaufNc2t4YYGX.6m3DLJFNPwxl5Qf7Z5ojvqPNc8gIQcy', '2', '', '2022-12-15 19:02:16', '2022-12-15 19:02:16'),
+(15, 'alexis123@gmail.com', '$2b$10$W9VJCqmGk0epZo3i0/bgauWWKjGJG2rPT3PzqkC7tAAOUL8snu23i', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiYWxleGlzMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3NjMzMDkyNn0.xwaZmmW1Jl5696oEoQrnc0Q-GN5ypyQkEsS8KWXnqes', '2023-02-13 23:28:46', '2023-02-13 23:28:46');
 
 --
 -- Índices para tablas volcadas
@@ -326,7 +326,8 @@ ALTER TABLE `sizes`
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -342,7 +343,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `edades`
@@ -360,19 +361,19 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `fundaciones`
 --
 ALTER TABLE `fundaciones`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen_mascotas`
 --
 ALTER TABLE `imagen_mascotas`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `sizes`
@@ -384,7 +385,7 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Restricciones para tablas volcadas

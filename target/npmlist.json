@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"api-mascotas","dependencies":{"@fastify/cors":{"version":"8.2.0"},"@fastify/mysql":{"version":"4.1.0"},"dayjs":{"version":"1.11.7"},"fastify":{"version":"4.10.2"},"knex":{"version":"2.3.0"},"module-alias":{"version":"2.2.2"},"mysql":{"version":"2.18.1"},"objection":{"version":"3.0.1"},"slug":{"version":"8.2.2"}}}
