@@ -113,8 +113,8 @@ class LoginController {
             error: []
         };
         try {
-            const validate = await emailValidator.validate(request.body.email.trim())
-            if (!validate.valid) {
+            const validate = (request.body.email.trim()).includes('@')
+            if (!validate) {
                 response.statusCode = 400
                 response.message = 'error'
                 response.error = {

@@ -5,12 +5,6 @@ const config = require('@config/app')
 module.exports = fp(function (fastify, opts, done) {
 
     fastify.register(require('@fastify/jwt'), {
-        // formatUser: function (user) {
-        //     return {
-        //         id: user.id,
-        //         email: user.email
-        //     }
-        // },
         secret: config.jwt.service_key
     })
 

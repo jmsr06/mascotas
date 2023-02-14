@@ -167,7 +167,6 @@ class FundacionController {
                 data: []
             };
             if (!image.includes(`${process.env.APP_URL}/`)) {
-                //consultar en bd el logo
                 const img = await Fundacion.query().select('logo')
                     .where('id', req.id)
                 const url_img = `./${img[0].logo}`
@@ -180,7 +179,6 @@ class FundacionController {
                 } else {
                     console.log('este path no existe', url_img)
                 }
-                //deco y guardar img
                 if (!image) {
                     logo = ''
                 } else {

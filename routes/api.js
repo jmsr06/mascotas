@@ -17,7 +17,6 @@ module.exports = function (fastify, opts, done) {
         reply.send('server')
     })
     fastify.get('/categorias' , CategoriaController.index)
-    // fastify.get('/categorias',{onRequest: [fastify.authenticate]} , CategoriaController.index)
     fastify.get('/ciudades', CiudadController.index)
     fastify.get('/edades', EdadController.index)
     fastify.get('/estados', EstadoController.index)

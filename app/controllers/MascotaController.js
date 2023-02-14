@@ -9,8 +9,6 @@ dayjs.extend(timezone);
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-const { transaction } = require('objection');
-
 //Models
 const Mascota = require('@models/Mascota');
 const ImagenMascota = require('@models/ImagenMascota');
