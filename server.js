@@ -38,7 +38,7 @@ server.setErrorHandler(function (error, request, reply) {
 
 server.register(require('@routes/api'), { prefix: '/' })
 
-server.listen({ port: 3000 }, function (err, address) {
+server.listen({ port: process.env.PORT || 3000 }, function (err, address) {
     console.log('server on')
     if (err) {
         server.log.error(err)
