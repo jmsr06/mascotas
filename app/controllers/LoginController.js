@@ -110,10 +110,11 @@ class LoginController {
             statusCode: 500,
             message: '',
             data: [],
-            error: []
+            error: [],
+            error2: []
         };
         try {
-            const validate = (request.body.email.trim()).includes('@')
+            const validate = (request.body.email).includes('@')
             if (!validate) {
                 response.statusCode = 400
                 response.message = 'error'
@@ -176,6 +177,7 @@ class LoginController {
             reply.status(response.statusCode).send(response)
         }
         catch (error) {
+            response.error2 = error
             reply.status(response.statusCode).send(response)
         }
     }
