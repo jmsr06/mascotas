@@ -61,6 +61,7 @@ class MascotaController {
         const images = request.body.imagenes;
         const slug = slugLibrary(req.nombre)
         const trx = await Mascota.startTransaction();
+        console.log(request.body)
         try {
             const response = {
                 statusCode: 0,
@@ -332,7 +333,7 @@ class MascotaController {
                 .join('ciudades', 'mascotas.ciudad_id', 'ciudades.id')
                 .join('fundaciones', 'mascotas.fundacion_id', 'fundaciones.id')
                 .join('imagen_mascotas', 'mascotas.id', 'imagen_mascotas.mascota_id')
-                .where('fundaciones.slug', request.params.fundacionSlug)
+                .where('fundaciones.user_id', request.user.id)
                 .where('imagen_mascotas.prioridad', '=', 1)
 
             if (request.query.categoria) {

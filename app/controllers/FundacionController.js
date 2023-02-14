@@ -115,20 +115,22 @@ class FundacionController {
         const req = request.body
         const slug = slugLibrary(request.body.nombre)
         const image = request.body.logo;
-        const logo = 'public/logos-fundaciones/' + crypto.randomBytes(16).toString('hex') + '.jpg';
-        const buffer = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
-        fs.writeFileSync(path.join(process.env.DIR_NAME, logo), buffer);
         try {
             const response = {
                 statusCode: 0,
                 message: '',
                 data: []
             };
+            if (image) {
+                const logo = 'public/logos-fundaciones/' + crypto.randomBytes(16).toString('hex') + '.jpg';
+                const buffer = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+                fs.writeFileSync(path.join(process.env.DIR_NAME, logo), buffer);
+            }
             const fundacion = await Fundacion.query().insert({
                 nombre: req.nombre,
                 slug: slug,
                 descripcion: req.descripcion,
-                logo: logo,
+                logo: image ? logo : null,
                 direccion: req.direccion,
                 telefono: req.telefono,
                 email: req.email,
@@ -140,7 +142,7 @@ class FundacionController {
             });
             response.statusCode = 201
             response.message = 'OK'
-            response.data = [];
+            response.data = fundacion;
             reply.status(201).send(response);
         } catch (err) {
             console.log(err)

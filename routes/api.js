@@ -29,10 +29,10 @@ module.exports = function (fastify, opts, done) {
     fastify.put('/fundaciones/:id', FundacionController.update)
     //MASCOTAS
     fastify.get('/mascotas', MascotaController.index)
-    fastify.post('/mascotasStore',MascotaOptions.store, MascotaController.store)
+    fastify.post('/mascotasStore', {onRequest: [fastify.authenticate ], ...MascotaOptions.store}, MascotaController.store)
     fastify.get('/mascotas/:slug', MascotaController.show)
     fastify.put('/mascotas/:id', MascotaController.update)
-    fastify.get('/fundacion/:fundacionSlug/mascotas', MascotaController.getMascotasFundacion)
+    fastify.get('/fundacion/mascotas',{onRequest: [fastify.authenticate]}, MascotaController.getMascotasFundacion)
     fastify.get('/fundacion/:fundacionSlug/mascotas/:estadoSlug', MascotaController.getMascotasFundacionEstado)
     fastify.delete('/eliminarMascota/:id', MascotaController.remove)
 
