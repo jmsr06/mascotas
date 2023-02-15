@@ -17,7 +17,7 @@ class LoginController {
         };
         try {
             const validate = (request.body.email).includes('@')
-            if (!validate.valid) {
+            if (!validate) {
                 response.statusCode = 400
                 response.message = 'error'
                 response.error = {
@@ -37,7 +37,7 @@ class LoginController {
                 throw new Error("Errores de validación.");
             }
             const user = await User.query()
-                .findOne({ email: request.body.email.trim() })
+                .findOne({ email: request.body.email })
             if (user == undefined) {
                 response.statusCode = 400
                 response.message = 'error'
