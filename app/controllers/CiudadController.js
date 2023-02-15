@@ -27,6 +27,7 @@ class CiudadController {
             reply.send(response);
 
         } catch(err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',

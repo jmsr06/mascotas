@@ -46,6 +46,7 @@ class MascotaController {
             response.data = mascotas;
             reply.send(response);
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',
@@ -281,6 +282,7 @@ class MascotaController {
             response.data = mascotas;
             reply.send(response);
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',
@@ -438,6 +440,7 @@ class MascotaController {
             });
             reply.send(response);
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',
@@ -479,6 +482,7 @@ class MascotaController {
             response.data = [];
             reply.send(response);
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',
@@ -550,6 +554,7 @@ class MascotaController {
             reply.send(response);
 
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',

@@ -28,6 +28,7 @@ class CategoriaController {
             reply.send(response);
 
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 0,
                 message: 'Server error',

@@ -57,6 +57,7 @@ class FundacionController {
             reply.send(response);
 
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',
@@ -103,6 +104,7 @@ class FundacionController {
             reply.send(response);
 
         } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',
@@ -121,8 +123,10 @@ class FundacionController {
                 message: '',
                 data: []
             };
+            let logo = ''
             if (image) {
-                const logo = 'public/logos-fundaciones/' + crypto.randomBytes(16).toString('hex') + '.jpg';
+                logo = 'public/logos-fundaciones/' + crypto.randomBytes(16).toString('hex') + '.jpg';
+                console.log('logo', logo)
                 const buffer = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
                 fs.writeFileSync(path.join(process.env.DIR_NAME, logo), buffer);
             }

@@ -19,14 +19,15 @@ class SizeController {
                 'created_at',
                 'updated_at'
             )
-            .orderBy('nombre', 'DESC')
+                .orderBy('nombre', 'DESC')
 
             response.statusCode = 200
             response.message = 'OK'
             response.data = sizes;
             reply.send(response);
 
-        } catch(err) {
+        } catch (err) {
+            console.log(err)
             reply.send({
                 statusCode: 500,
                 message: 'Server error',

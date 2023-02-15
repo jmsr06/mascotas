@@ -20,6 +20,7 @@ class ImagenMascotaController {
                     response.data = imagenMascota;
                     reply.send(response);
                 } catch (err) {
+                    console.log(err)
                     reply.send({
                         statusCode: 500,
                         message: 'Server error',

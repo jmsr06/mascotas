@@ -80,19 +80,19 @@ class LoginController {
             }
             if (!user.token) {
                 const token = await reply.jwtSign({
-                        id: user.id,
-                        email: user.email
+                    id: user.id,
+                    email: user.email
                 })
 
                 await User.query().patch({
                     token
                 })
-                .where('id', user.id);
+                    .where('id', user.id);
                 user.token = token
 
             }
             const fundacion = await Fundacion.query().findOne({
-                user_id : user.id
+                user_id: user.id
             })
             user.fundacion = fundacion ? fundacion : null
             response.statusCode = 200
@@ -110,8 +110,7 @@ class LoginController {
             statusCode: 500,
             message: '',
             data: [],
-            error: [],
-            error2: []
+            error: []
         };
         try {
             const validate = (request.body.email).includes('@')
@@ -177,7 +176,7 @@ class LoginController {
             reply.status(response.statusCode).send(response)
         }
         catch (error) {
-            response.error2 = error
+            console.log(error)
             reply.status(response.statusCode).send(response)
         }
     }
@@ -191,7 +190,7 @@ class LoginController {
         };
         try {
             await User.query().patch({
-                token : null
+                token: null
             })
                 .where('id', request.user.id);
             response.statusCode = 200

@@ -12,6 +12,7 @@ module.exports = fp(function (fastify, opts, done) {
         try {
             await request.jwtVerify()
         } catch (err) {
+            console.log(err)
             reply.status(401).send(err)
         }
     })
