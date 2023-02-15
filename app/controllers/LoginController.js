@@ -1,5 +1,5 @@
 require('module-alias/register') // ALIAS
-const emailValidator = require('deep-email-validator');
+// const emailValidator = require('deep-email-validator');
 const bcrypt = require("bcrypt");
 
 //Models
@@ -16,7 +16,7 @@ class LoginController {
             error: []
         };
         try {
-            const validate = await emailValidator.validate(request.body.email.trim())
+            const validate = (request.body.email).includes('@')
             if (!validate.valid) {
                 response.statusCode = 400
                 response.message = 'error'
